@@ -11,6 +11,9 @@ class User extends Authenticatable
 {
     use HasFactory, Notifiable;
 
+//for removing created_at & updated_at columns in table
+    // public $timestamps = false;
+
     /**
      * The attributes that are mass assignable.
      *
