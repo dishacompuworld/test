@@ -1,0 +1,32 @@
+[
+    {
+        "name" : "Sachin Tendulkar",
+        "email" : "sachin@gmail.com",
+        "password" : "new pass"
+    },
+    {
+        "name" : "Vijay Chavan",
+        "email" : "vijay@gmail.com",
+        "password" : "new pass"
+    },
+    {
+        "name" : "Sagar Patil",
+        "email" : "sagar@gmail.com",
+        "password" : "new pass"
+    },
+    {
+        "name" : "Virat Kohali",
+        "email" : "virat@gmail.com",
+        "password" : "new pass"
+    },
+    {
+        "name" : "Laabh Kothekar",
+        "email" : "labh@gmail.com",
+        "password" : "new pass"
+    },
+    {
+        "name" : "Mrunmai Kothekar",
+        "email" : "didi@gmail.com",
+        "password" : "new pass"
+    }
+]
