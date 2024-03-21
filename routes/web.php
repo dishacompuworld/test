@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\HomeController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -8,9 +10,8 @@ Route::get('/', function () {
 
 Auth::routes();
 
-<<<<<<< Updated upstream
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-=======
+
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 Route::controller(UserController::class)->group(function(){
@@ -28,6 +29,5 @@ Route::controller(UserController::class)->group(function(){
 });
 
 
-
 Route::view('/newuser','/adduser');
->>>>>>> Stashed changes
+
