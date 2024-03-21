@@ -17,6 +17,7 @@
     
     <div class="container">
         <h1>All User</h1>
+        <a href="newuser" class="btn btn-success btn-sm mb-3">Add New</a>
         <div class="row">
             <div class="col-6">
                 <table class="table table-bordered table-striped">
@@ -33,6 +34,7 @@
                         </tr>
                     @endforeach
                 </table>
+                <div class="mt-5">{{ $data->links('pagination::bootstrap-5') }}</div>
             </div>
         </div>
     </div>

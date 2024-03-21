@@ -25,6 +25,21 @@ class UserController extends Controller
 
     public function adduser(Request $request){
 
+        $request->validate([
+            'username' => 'required',
+            'email' => 'required|email',
+            'password' => 'required|alpha_num',
+            'city' => 'required',
+        ],
+        [
+           'username.required' => 'Enter Name Proprly.',
+           'email.required' => 'Enter Email Address.',
+           'email.email' => 'Enter Email Address Properly!',
+           'password.required' => 'Enter Password field',
+           'password.alpha_num' => 'Enter Password field in Alpha Numaric Format!',
+           'city.required' => 'Enter City Field.',
+        ]);
+
         $user = DB::table('users')
         ->insert([
             
