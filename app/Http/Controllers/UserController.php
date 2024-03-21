@@ -9,8 +9,8 @@ class UserController extends Controller
 {
     public function showUsers(){
         $users = DB::table('users')
-        ->select('id','name','email')                
-        ->get();
+        ->select('id','name','email','city')                
+        ->paginate(10, ['*'],'panna');
         // return $users;
         
         return view('allusers',['data'=> $users]);
@@ -23,50 +23,74 @@ class UserController extends Controller
         return view('user',['data'=> $user]);
     }
 
-    public function adduser(){
+    public function adduser(Request $request){
+
         $user = DB::table('users')
         ->insert([
-            [
-                'name'=> 'Smita Thakur',
-                'email' => 'smita@dishacompuworld.com',
-                'password' => 'newpassword',
+            
+                'name'=> $request->username,
+                'email' => $request->email,
+                'password' => $request->password,
+                'city' => $request->city,
                 'created_at' => now(),
                 'updated_at' => now()
-            ],
-            [
-                'name'=> 'Rajesh Thakur',
-                'email' => 'rt@dishacompuworld.com',
-                'password' => 'newpassword',
-                'created_at' => now(),
-                'updated_at' => now()
-            ],
-            [
-                'name'=> 'Arnesh Kothekar',
-                'email' => 'arnesh@dishacompuworld.com',
-                'password' => 'newpassword',
-                'created_at' => now(),
-                'updated_at' => now()
-            ]
         ]);
 
+
+        // $user = DB::table('users')
+        // ->insert([
+        //     [
+        //         'name'=> 'Smita Thakur',
+        //         'email' => 'smita@dishacompuworld.com',
+        //         'password' => 'newpassword',
+        //         'created_at' => now(),
+        //         'updated_at' => now()
+        //     ],
+        //     [
+        //         'name'=> 'Rajesh Thakur',
+        //         'email' => 'rt@dishacompuworld.com',
+        //         'password' => 'newpassword',
+        //         'created_at' => now(),
+        //         'updated_at' => now()
+        //     ],
+        //     [
+        //         'name'=> 'Arnesh Kothekar',
+        //         'email' => 'arnesh@dishacompuworld.com',
+        //         'password' => 'newpassword',
+        //         'created_at' => now(),
+        //         'updated_at' => now()
+        //     ]
+        // ]);
+
         if($user){
-            echo "<h2>Record successfully Added.</h2>";
+            return redirect()->route('userLoad');
         }else{
             echo "<h2>Record Not Added.</h2>";
         }
     }
 
+    public function updatepage(string $id){
+        // $user = DB::table('users')->where('id',$id)->get();
+        $user = DB::table('users')->find($id);
+         //return $user;
+        return view('updateuser',['data'=> $user]);
+    }
 
-    public function updateuser(){
+
+    public function updateuser(Request $request, $idd){
+        //return $request;
         $user = DB::table('users')
-            ->where('id', 12)
+            ->where('id', $idd)
             ->update([
-                'email' => 'new2@gmail.com',
-                'password' => 'NewP2assword'
+                'name' => $request->username,
+                'email' => $request->email,
+                'password' => $request->password,
+                'city' => $request->city,
+                'updated_at' => now()
             ]);
 
         if($user){
-            echo "<h2>Record successfully Updated</h2>";
+            return redirect()->route('userLoad');
         }else{
             echo "<h2>Record Not Updated</h2>";
         }

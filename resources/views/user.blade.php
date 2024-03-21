@@ -24,6 +24,7 @@
                         <tr><td><b>ID</b><td>{{ $user->id }}</td></tr>
                         <tr><td><b>Name</b></td><td>{{ $user->name }}</td></tr>
                         <tr><td><b>Email</b></td><td>{{ $user->email }}</td></tr>
+                        <tr><td><b>City</b></td><td>{{ $user->city }}</td></tr>
                     @endforeach
                 </table>
             </div>

@@ -10,14 +10,24 @@ Route::get('/', function () {
 
 Auth::routes();
 
+<<<<<<< Updated upstream
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+=======
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
-Route::get('/userLoad', [UserController::class,'showUsers'])->name('userLoad');
+Route::controller(UserController::class)->group(function(){
+    Route::get('/userLoad', 'showUsers')->name('userLoad');
 
-Route::get('/user/{id}', [UserController::class,'singleuser'])->name('view.user');
+    Route::get('/user/{id}', 'singleuser')->name('view.user');
+    
+    Route::post('/adduser', 'adduser')->name('adduser');
+    
+    Route::put('/updateuser/{id}', 'updateuser')->name('updateuser');
+    
+    Route::get('/updatepage/{id}', 'updatepage')->name('update.page');
+    
+    Route::get('/deleteuser/{id}', 'deleteuser')->name('delete.user');
+});
 
-Route::get('/adduser', [UserController::class,'adduser']);
 
-Route::get('/updateuser', [UserController::class,'updateuser']);
-
-Route::get('/deleteuser/{id}', [UserController::class,'deleteuser'])->name('delete.user');
+Route::view('/newuser','/adduser');
