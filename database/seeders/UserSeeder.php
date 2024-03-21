@@ -78,6 +78,10 @@ class UserSeeder extends Seeder
         //     ]);
         // }
         
+
         User::factory(10)->create();
+
+         //User::factory(10)->create();
+
     }
 }

@@ -3,7 +3,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>All Users</title>
+    <title>City Details</title>
 
     {{-- <!-- Fonts --> --}}
     {{-- <link rel="preconnect" href="https://fonts.bunny.net">
@@ -16,16 +16,14 @@
 <body>
     
     <div class="container">
-        <h1>User Details</h1>
+        <h1>City Details</h1>
         
         <div class="row">
             <div class="col-6">
                 <table class="table table-bordered table-striped">
-                    @foreach ($data as $id => $user )
-                        <tr><td><b>ID</b><td>{{ $user->id }}</td></tr>
-                        <tr><td><b>Name</b></td><td>{{ $user->name }}</td></tr>
-                        <tr><td><b>Email</b></td><td>{{ $user->email }}</td></tr>
-                        <tr><td><b>City</b></td><td>{{ $user->city }}</td></tr>
+                    @foreach ($data as $id => $city )
+                        <tr><td><b>ID</b><td>{{ $city->id }}</td></tr>
+                        <tr><td><b>Name</b></td><td>{{ $city->name }}</td></tr>
                     @endforeach
                 </table>
             </div>
