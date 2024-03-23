@@ -14,9 +14,12 @@ Auth::routes();
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 Route::controller(UserController::class)->group(function(){
+
     Route::get('/userLoad', 'showUsers')->name('userLoad');
 
     Route::get('/user/{id}', 'singleuser')->name('view.user');
+
+    // Route::view('/newuser','/adduser');
     
     Route::post('/adduser', 'adduser')->name('adduser');
     
@@ -26,16 +29,29 @@ Route::controller(UserController::class)->group(function(){
     
     Route::get('/deleteuser/{id}', 'deleteuser')->name('delete.user');
     
-    Route::view('/newuser','/adduser');
+    
 });
 
 Route::controller(UserCityController::class)->group(function(){
+
     Route::get('/showcity', 'showCity')->name('loadcity');
+
     Route::get('/city/{id}', 'city')->name('view.city');
 
-    Route::get('/deletecity/{id}', 'deletecity')->name('delete.city');
-});
+    Route::view('/newcity','/addcity');
 
+    Route::post('/addcity', 'addnewcity')->name('addcity');
+
+    Route::put('/updatecity/{id}', 'updatecity')->name('updatecity');
+    
+    Route::get('/updatecitypage/{id}', 'updatecitypage')->name('updatecity.page');
+
+    Route::get('/deletecity/{id}', 'deletecity')->name('delete.city');
+
+    // Route::get('citydropdown', 'showCitySelect')->name('dropdown.city');
+
+    Route::get('/newuser','showCitySelect');
+});
 
 
 

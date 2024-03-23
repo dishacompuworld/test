@@ -26,7 +26,14 @@
                     </div>
                     <div class="mb-3">
                         <label class="form-lable">City</label>
-                        <input type="text" name="city" class="form-control" value="{{ $data->city}}">
+                        {{-- <input type="text" name="city" class="form-control" value="{{ $data->city}}"> --}}
+                        <select name="city" id="">
+                            @foreach ($data1 as $row)
+                                <option value="{{ $row->id }}" @php
+                                    if($data->city == $row->id){ echo 'selected'; }
+                                @endphp>{{ $row->name }}</option>
+                            @endforeach
+                        </select>
                     </div>
                     <div class="mb-3">
                         <label class="form-lable">password</label>

@@ -17,7 +17,7 @@
     
     <div class="container">
         <h1>All Cities</h1>
-        <a href="newuser" class="btn btn-success btn-sm mb-3">Add New City</a>
+        <a href="newcity" class="btn btn-success btn-sm mb-3" style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;">Add New City</a>
         <div class="row">
             <div class="col-6">
                 <table class="table table-bordered table-striped">
@@ -26,9 +26,9 @@
                         <tr>
                             <td>{{ $city->id }}</td>
                             <td>{{ $city->name }}</td>
-                            <td><a href="{{ route('view.city',$city->id) }}" class="btn btn-primary btn-sm">Show</a></td>
-                            <td><a href="{{ route('delete.city',$city->id) }}" class="btn btn-danger btn-sm">Delete</a></td>
-                            <td><a href="{{ route('update.page',$city->id) }}" class="btn btn-warning btn-sm">Update</a></td>
+                            <td><a href="{{ route('view.city',$city->id) }}" class="btn btn-primary btn-sm" style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;">Show</a></td>
+                            <td><a href="{{ route('delete.city',$city->id) }}" class="btn btn-danger btn-sm" style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;">Delete</a></td>
+                            <td><a href="{{ route('updatecity.page',$city->id) }}" class="btn btn-warning btn-sm" style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;">Update</a></td>
                         </tr>
                     @endforeach
                 </table>

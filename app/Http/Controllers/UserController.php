@@ -4,14 +4,20 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Http\Requests\UserRequest;
 
 class UserController extends Controller
 {
     public function showUsers(){
         $users = DB::table('users')
-        ->select('id','name','email','city')                
+        // ->select('id','name','email','city')
+        // 
+        ->select('users.*','cities.name as cityname')
+        ->leftjoin('cities','users.city','=', 'cities.id')
         ->paginate(10, ['*'],'panna');
-        // return $users;
+        // ->get();
+
+        //return $users;
         
         return view('allusers',['data'=> $users]);
     }
@@ -23,22 +29,7 @@ class UserController extends Controller
         return view('user',['data'=> $user]);
     }
 
-    public function adduser(Request $request){
-
-        $request->validate([
-            'username' => 'required',
-            'email' => 'required|email',
-            'password' => 'required|alpha_num',
-            'city' => 'required',
-        ],
-        [
-           'username.required' => 'Enter Name Proprly.',
-           'email.required' => 'Enter Email Address.',
-           'email.email' => 'Enter Email Address Properly!',
-           'password.required' => 'Enter Password field',
-           'password.alpha_num' => 'Enter Password field in Alpha Numaric Format!',
-           'city.required' => 'Enter City Field.',
-        ]);
+    public function adduser(UserRequest $request){
 
         $user = DB::table('users')
         ->insert([
@@ -87,8 +78,11 @@ class UserController extends Controller
     public function updatepage(string $id){
         // $user = DB::table('users')->where('id',$id)->get();
         $user = DB::table('users')->find($id);
+        $cities = DB::table('cities')->select('id','name')->get();
+
+
          //return $user;
-        return view('updateuser',['data'=> $user]);
+        return view('updateuser',['data'=> $user, 'data1'=>$cities]);
     }
 
 

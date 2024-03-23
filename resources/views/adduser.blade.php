@@ -9,10 +9,13 @@
 
 </head>
 <body>
+
+    {{-- @php --}}
+    {{-- {{ App\Http\Controllers\UserCityController::showCitySelect() }} --}}
     <div class="container">
         <div class="row">
             <div class="col-4">
-                <h2>Add New USer</h2>
+                <h2>Add New User</h2>
                 {{-- @if($errors->any())
                     <ul class="alert alert-danger" list-style-position="inside">
                         @foreach ($errors->all() as $error)
@@ -39,9 +42,16 @@
                         <span class="text-danger"> @error('password') {{ $message }} @enderror </span>
                     </div>
                     <div class="mb-3">
-                        <label class="form-lable">City</label>
-                        <input type="text" value="{{ old('city') }}" name="city" class="form-control @error('city') is-invalid @enderror">
-                        <span class="text-danger"> @error('city') {{ $message }} @enderror </span>
+                        {{-- <label class="form-lable">City</label>
+                        {{-- <input type="text" value="{{ old('city') }}" name="city" class="form-control @error('city') is-invalid @enderror"> --}}
+                        {{-- <span class="text-danger"> @error('city') {{ $message }} @enderror </span> --}} --}}
+
+                        <select name="city" id="">
+                            @foreach ($data as $row)
+                                <option value="{{ $row->id }}">{{ $row->name }}</option>
+                            @endforeach
+                        </select>
+
                     </div>
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </form>
