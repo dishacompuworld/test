@@ -9,8 +9,9 @@ class UserCityController extends Controller
 {
     public function showCity(){
         $cities = DB::table('cities')
-        ->select('id','name')                
-        ->get();
+        ->select('id','name','state')
+        ->paginate(20, ['*'],'panna');                
+        // ->get();
         
         // return $cities;
         return view('allcity',['data'=> $cities]);
@@ -49,6 +50,7 @@ class UserCityController extends Controller
         ->insert([
             
                 'name'=> $request->cityname,
+                'state'=> $request->citystate,
         ]);
 
 
@@ -73,7 +75,10 @@ class UserCityController extends Controller
             ->where('id', $idd)
             ->update([
                 'name' => $request->cityname,
+                'state' => $request->citystate
             ]);
+
+            //return $city;
 
         if($city){
             return redirect()->route('loadcity');

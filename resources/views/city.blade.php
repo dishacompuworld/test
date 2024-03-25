@@ -24,8 +24,10 @@
                     @foreach ($data as $id => $city )
                         <tr><td><b>ID</b><td>{{ $city->id }}</td></tr>
                         <tr><td><b>Name</b></td><td>{{ $city->name }}</td></tr>
+                        <tr><td><b>State</b></td><td>{{ $city->state }}</td></tr>
                     @endforeach
                 </table>
+                <div class="mt-5">{{ $data->links('pagination::bootstrap-5') }}</div>
             </div>
         </div>
     </div>

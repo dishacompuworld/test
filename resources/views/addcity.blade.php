@@ -31,6 +31,11 @@
                         <input type="text" value="{{ old('cityname') }}" name="cityname" class="form-control @error('cityname') is-invalid @enderror">
                         <span class="text-danger"> @error('cityname') {{ $message }} @enderror </span> 
                     </div>
+                    <div class="mb-3">
+                        <label class="form-lable">City State</label>
+                        <input type="text" value="{{ old('citystate') }}" name="citystate" class="form-control @error('citystate') is-invalid @enderror">
+                        <span class="text-danger"> @error('citystate') {{ $message }} @enderror </span> 
+                    </div>
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </form>
             </div>

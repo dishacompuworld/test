@@ -69,7 +69,7 @@ class UserController extends Controller
         // ]);
 
         if($user){
-            return redirect()->route('userLoad');
+            return redirect()->route('user.index');
         }else{
             echo "<h2>Record Not Added.</h2>";
         }

@@ -21,18 +21,19 @@
         <div class="row">
             <div class="col-6">
                 <table class="table table-bordered table-striped">
-                    <tr><th>Id</th><th>Name</th><th>Show</th><th>Delete</th><th>Update</th></tr>
+                    <tr><th>Id</th><th>Name</th><th>State</th><th>Show</th><th>Delete</th><th>Update</th></tr>
                     @foreach ($data as $id => $city )
                         <tr>
                             <td>{{ $city->id }}</td>
                             <td>{{ $city->name }}</td>
+                            <td>{{ $city->state }}</td>
                             <td><a href="{{ route('view.city',$city->id) }}" class="btn btn-primary btn-sm" style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;">Show</a></td>
                             <td><a href="{{ route('delete.city',$city->id) }}" class="btn btn-danger btn-sm" style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;">Delete</a></td>
                             <td><a href="{{ route('updatecity.page',$city->id) }}" class="btn btn-warning btn-sm" style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;">Update</a></td>
                         </tr>
                     @endforeach
                 </table>
-                {{-- <div class="mt-5">{{ $data->links('pagination::bootstrap-5') }}</div> --}}
+                <div class="mt-5">{{ $data->links('pagination::bootstrap-5') }}</div>
             </div>
         </div>
     </div>

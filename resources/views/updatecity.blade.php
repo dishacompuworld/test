@@ -20,6 +20,10 @@
                         <label class="form-lable">Name</label>
                         <input type="text" name="cityname" class="form-control" value="{{ $data->name}}">
                     </div>
+                    <div class="mb-3">
+                        <label class="form-lable">State</label>
+                        <input type="text" name="citystate" class="form-control" value="{{ $data->state}}">
+                    </div>
                     <button type="submit" class="btn btn-primary">Update</button>
                 </form>
             </div>
